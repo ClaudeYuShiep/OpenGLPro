@@ -52,107 +52,107 @@ void OnKey(int key, int action, int mods)
 //     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 // }
 
-void prepareSingleBuffer()
-{
-    //准备顶点位置数据和颜色数据
-
-    float positions[] = {
-        -0.5f, -0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-         0.0f,  0.5f, 0.0f,
-    };
-
-    float colors[] = {
-         1.0f, 0.0f, 0.0f,
-         0.0f, 1.0f, 0.0f,
-         0.0f, 0.0f, 1.0f,
-    };
-    //为位置&颜色数据各生成一个vbo
-    GLuint posVbo = 0, colorVbo = 0;
-    glGenBuffers(1, &posVbo);
-    glGenBuffers(1, &colorVbo);
-    //给两个分开的vbo填充数据
-    //GL_ARRAY_BUFFER为顶点类型的buffer
-    GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, posVbo));
-    GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW));
-
-    GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, colorVbo));
-    GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW));
-
-    //生成VAO并且绑定
-    GLuint vao = 0;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-
-    //分别将位置/颜色属性的描述信息加入vao中
-
-    //描述位置属性
-    glBindBuffer(GL_ARRAY_BUFFER, posVbo);  //绑定该posVbo，vao里的属性才会与其相关
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float),(void*)0);
-
-    //描述颜色属性
-    glBindBuffer(GL_ARRAY_BUFFER, colorVbo);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
-
-    glBindVertexArray(0);
-
-}
-
-void prepareInterLeavedBuffer()
-{
-    float vertices[] = {
-        -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-         0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-         0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
-    };
-
-    GLuint vbo = 0;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW));
-
-    vao = 0;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);//绑定该vbo，vao里的属性才会与其相关
-
-    //位置信息
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float),(void*)0);
-    //颜色信息
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float),(void*)(3*sizeof(float)));
-}
-
-void prepareVAOForGLTriangles()
-{
-    float positions[] = {
-        -0.5f, -0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-         0.0f,  0.5f, 0.0f,
-         0.5f,  0.5f, 0.0f
-    };
-
-    //posVbo
-    GLuint posVbo = 0;
-    glGenBuffers(1, &posVbo);
-    glBindBuffer(GL_ARRAY_BUFFER, posVbo);
-    GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW));
-
-    //vao
-
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    glBindBuffer(GL_ARRAY_BUFFER, posVbo);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float),(void*)0);
-    glBindVertexArray(0);
-}
+// void prepareSingleBuffer()
+// {
+//     //准备顶点位置数据和颜色数据
+//
+//     float positions[] = {
+//         -0.5f, -0.5f, 0.0f,
+//          0.5f, -0.5f, 0.0f,
+//          0.0f,  0.5f, 0.0f,
+//     };
+//
+//     float colors[] = {
+//          1.0f, 0.0f, 0.0f,
+//          0.0f, 1.0f, 0.0f,
+//          0.0f, 0.0f, 1.0f,
+//     };
+//     //为位置&颜色数据各生成一个vbo
+//     GLuint posVbo = 0, colorVbo = 0;
+//     glGenBuffers(1, &posVbo);
+//     glGenBuffers(1, &colorVbo);
+//     //给两个分开的vbo填充数据
+//     //GL_ARRAY_BUFFER为顶点类型的buffer
+//     GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, posVbo));
+//     GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW));
+//
+//     GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, colorVbo));
+//     GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW));
+//
+//     //生成VAO并且绑定
+//     GLuint vao = 0;
+//     glGenVertexArrays(1, &vao);
+//     glBindVertexArray(vao);
+//
+//
+//     //分别将位置/颜色属性的描述信息加入vao中
+//
+//     //描述位置属性
+//     glBindBuffer(GL_ARRAY_BUFFER, posVbo);  //绑定该posVbo，vao里的属性才会与其相关
+//     glEnableVertexAttribArray(0);
+//     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float),(void*)0);
+//
+//     //描述颜色属性
+//     glBindBuffer(GL_ARRAY_BUFFER, colorVbo);
+//     glEnableVertexAttribArray(1);
+//     glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
+//
+//     glBindVertexArray(0);
+//
+// }
+//
+// void prepareInterLeavedBuffer()
+// {
+//     float vertices[] = {
+//         -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+//          0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+//          0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+//     };
+//
+//     GLuint vbo = 0;
+//     glGenBuffers(1, &vbo);
+//     glBindBuffer(GL_ARRAY_BUFFER, vbo);
+//     GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW));
+//
+//     vao = 0;
+//     glGenVertexArrays(1, &vao);
+//     glBindVertexArray(vao);
+//
+//     glBindBuffer(GL_ARRAY_BUFFER, vbo);//绑定该vbo，vao里的属性才会与其相关
+//
+//     //位置信息
+//     glEnableVertexAttribArray(0);
+//     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float),(void*)0);
+//     //颜色信息
+//     glEnableVertexAttribArray(1);
+//     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float),(void*)(3*sizeof(float)));
+// }
+//
+// void prepareVAOForGLTriangles()
+// {
+//     float positions[] = {
+//         -0.5f, -0.5f, 0.0f,
+//          0.5f, -0.5f, 0.0f,
+//          0.0f,  0.5f, 0.0f,
+//          0.5f,  0.5f, 0.0f
+//     };
+//
+//     //posVbo
+//     GLuint posVbo = 0;
+//     glGenBuffers(1, &posVbo);
+//     glBindBuffer(GL_ARRAY_BUFFER, posVbo);
+//     GL_CALL(glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW));
+//
+//     //vao
+//
+//     glGenVertexArrays(1, &vao);
+//     glBindVertexArray(vao);
+//
+//     glBindBuffer(GL_ARRAY_BUFFER, posVbo);
+//     glEnableVertexAttribArray(0);
+//     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float),(void*)0);
+//     glBindVertexArray(0);
+// }
 
 void prepareShader()
 {
@@ -164,8 +164,7 @@ void prepareVAO()
     float positions[] = {
         -0.5f, -0.5f, 0.0f,
          0.5f, -0.5f, 0.0f,
-         0.0f,  0.5f, 0.0f,
-         0.5f,  0.5f, 0.0f,
+         0.0f,  0.5f, 0.0f
     };
 
     float colors[] = {
@@ -194,8 +193,14 @@ void prepareVAO()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
+    //vao的创建
     glGenVertexArrays(1,&vao);
     glBindVertexArray(vao);
+
+    /*动态获取位置
+    GLint posLocation = glGetAttribLocation(shader->mProgram, "aPos");
+    GLuint colorLocation = glGetAttribLocation(shader->mProgram, "aColor");
+    */
 
     //绑定vbo ebo
     glBindBuffer(GL_ARRAY_BUFFER, posVbo);
@@ -222,6 +227,9 @@ void render()
     //绑定当前的program
 
     shader->begin();
+
+    //更新Uniform类型数据时，一定要先UserProgram（封装在begin函数中）
+    shader->setFloat("time",glfwGetTime());
 
     //绑定当前的vao
 

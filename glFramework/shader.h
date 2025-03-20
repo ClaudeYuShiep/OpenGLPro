@@ -12,6 +12,9 @@ public:
 
     void end(); //结束使用当前的shader
 
+    void setFloat(const std::string& name, float value);
+
+    GLuint getProgram();
 private:
     GLuint mProgram{0};
 

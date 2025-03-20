@@ -27,7 +27,7 @@ add_subdirectory(glFramework)
 #本工程所有cpp文件编译连接，生成exe
 add_executable(OpenGL main.cpp glad.c)
 
-target_link_libraries(OpenGL  wrapper #自定义库
+target_link_libraries(OpenGL wrapper #自定义库
         app #自定义库
         fw #自定义库
         libglfw3.a
