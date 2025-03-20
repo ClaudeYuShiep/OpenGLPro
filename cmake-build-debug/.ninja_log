@@ -1,0 +1,11 @@
+# ninja log v6
+4	1574	7641055821430235	build.ninja	cb5545217acdf450
+1104	1247	7640979331898616	wrapper/libwrapper.a	d7b7fd3660f5853f
+12	1029	7641053981430460	glFramework/CMakeFiles/fw.dir/shader.cpp.obj	67cb0b31cb966c6f
+20	1022	7641053674683100	CMakeFiles/OpenGL.dir/main.cpp.obj	39d316286bcfb032
+52	1104	7640979321378614	wrapper/CMakeFiles/wrapper.dir/checkError.cpp.obj	cf8fa76cb3c77c4a
+1030	1481	7641053991600717	glFramework/libfw.a	bf2d0e2b30541d08
+887	1031	7641008191898069	application/libapp.a	a88cd11cb8d44c3a
+10	886	7641008183128074	application/CMakeFiles/app.dir/Application.cpp.obj	cf8d0882152abb87
+88	1971	7640979321738706	CMakeFiles/OpenGL.dir/glad.c.obj	64c446bbe127ba25
+1481	1843	7641053996116207	OpenGL.exe	611584d5799eae6f

@@ -1,0 +1,12 @@
+D:/OpenGL/cmake-build-debug/CMakeFiles/OpenGL.dir
+D:/OpenGL/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/OpenGL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/OpenGL/cmake-build-debug/wrapper/CMakeFiles/wrapper.dir
+D:/OpenGL/cmake-build-debug/wrapper/CMakeFiles/edit_cache.dir
+D:/OpenGL/cmake-build-debug/wrapper/CMakeFiles/rebuild_cache.dir
+D:/OpenGL/cmake-build-debug/application/CMakeFiles/app.dir
+D:/OpenGL/cmake-build-debug/application/CMakeFiles/edit_cache.dir
+D:/OpenGL/cmake-build-debug/application/CMakeFiles/rebuild_cache.dir
+D:/OpenGL/cmake-build-debug/glFramework/CMakeFiles/fw.dir
+D:/OpenGL/cmake-build-debug/glFramework/CMakeFiles/edit_cache.dir
+D:/OpenGL/cmake-build-debug/glFramework/CMakeFiles/rebuild_cache.dir
